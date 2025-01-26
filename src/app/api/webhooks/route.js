@@ -1,6 +1,6 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
-import { createOrUpdateUser } from "@/lib/actions/user";
+import { createOrUpdateUser, deleteUser } from "@/lib/actions/user";
 import { clerkClient } from "@clerk/nextjs/server";
 
 export async function POST(req) {
@@ -53,11 +53,8 @@ export async function POST(req) {
   const { id } = evt?.data;
   const eventType = evt?.type;
 
-  // LOG EVENT USER CREATED and USER UPDATED
   if (eventType === "user.created" || eventType === "user.updated") {
-    // GET FIRST NAME, LAST NAME, IMAGE AND EMAIL FROM DATA
     const { first_name, last_name, image_url, email_addresses } = evt?.data;
-    public_metadata;
     try {
       const user = await createOrUpdateUser(
         id,
@@ -68,30 +65,28 @@ export async function POST(req) {
       );
       if (user && eventType === "user.created") {
         try {
-          // STORE IN CLERK
-          await clerkClient.user.updateUserMetaData(id, {
+          await clerkClient.users.updateUserMetadata(id, {
             publicMetadata: {
-              userMongoId: user._id.toString(),
+              userMogoId: user._id,
             },
           });
         } catch (error) {
-          console.log("Error: Could not add Clerk user ID", error);
+          console.log("Error: Could not update user metadata:", error);
         }
       }
     } catch (error) {
-      console.log("Error: Could not create or update user", error);
+      console.log("Error: Could not create or update user:", error);
       return new Response("Error: Could not create or update user", {
         status: 400,
       });
     }
   }
 
-  // LOG EVENT USER DELETED
   if (eventType === "user.deleted") {
     try {
       await deleteUser(id);
     } catch (error) {
-      console.log("Error: Could not delete user", error);
+      console.log("Error: Could not delete user:", error);
       return new Response("Error: Could not delete user", {
         status: 400,
       });
