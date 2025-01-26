@@ -1,8 +1,8 @@
-import User from "../models/user.model.js";
-import { connect } from "../mongodb/mongoose.js";
+import User from "../models/user.model";
+
+import { connect } from "../mongodb/mongoose";
 
 export const createOrUpdateUser = async (
-  // Information we want to get from Clerk
   id,
   first_name,
   last_name,
@@ -18,7 +18,6 @@ export const createOrUpdateUser = async (
           firstName: first_name,
           lastName: last_name,
           profilePicture: image_url,
-          profilePicture: image_url,
           email: email_addresses[0].email_address,
         },
       },
@@ -29,8 +28,6 @@ export const createOrUpdateUser = async (
     console.log("Error: Could not create or update user:", error);
   }
 };
-
-// GO BACK AT 1:02:00 BACKWARDS IN THE VIDEO TO UNDERSTAND WHY THEY CHOSE WHAT THEY CHOSE
 
 export const deleteUser = async (id) => {
   try {

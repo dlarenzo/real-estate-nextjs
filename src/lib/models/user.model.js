@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
 
-// USER SCHEMA ADDING RULES
-
 const userSchema = new mongoose.Schema(
   {
     clerkId: {
       type: String,
+      required: true,
       unique: true,
     },
     email: {
@@ -26,10 +25,9 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
+
 export default User;
