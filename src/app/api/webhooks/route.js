@@ -1,5 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
+import { createOrUpdateUser } from "@/lib/actions/user";
+import { clerkClient } from "@clerk/nextjs/server";
 
 export async function POST(req) {
   const SIGNING_SECRET = process.env.SIGNING_SECRET;
@@ -48,22 +50,52 @@ export async function POST(req) {
 
   // Do something with payload
   // For this guide, log payload to console
-  const { id } = evt.data;
-  const eventType = evt.type;
+  const { id } = evt?.data;
+  const eventType = evt?.type;
 
-  // LOG EVENT USER CREATED
-  if (evt.type === "user.created") {
-    console.log("user.created");
+  // LOG EVENT USER CREATED and USER UPDATED
+  if (eventType === "user.created" || eventType === "user.updated") {
+    // GET FIRST NAME, LAST NAME, IMAGE AND EMAIL FROM DATA
+    const { first_name, last_name, image_url, email_addresses } = evt?.data;
+    public_metadata;
+    try {
+      const user = await createOrUpdateUser(
+        id,
+        first_name,
+        last_name,
+        image_url,
+        email_addresses
+      );
+      if (user && eventType === "user.created") {
+        try {
+          // STORE IN CLERK
+          await clerkClient.user.updateUserMetaData(id, {
+            publicMetadata: {
+              userMongoId: user._id.toString(),
+            },
+          });
+        } catch (error) {
+          console.log("Error: Could not add Clerk user ID", error);
+        }
+      }
+    } catch (error) {
+      console.log("Error: Could not create or update user", error);
+      return new Response("Error: Could not create or update user", {
+        status: 400,
+      });
+    }
   }
 
   // LOG EVENT USER DELETED
-  if (evt.type === "user.deleted") {
-    console.log("user.deleted");
-  }
-
-  // LOG EVENT USER UPDATED
-  if (evt.type === "user.updated") {
-    console.log("user.updated");
+  if (eventType === "user.deleted") {
+    try {
+      await deleteUser(id);
+    } catch (error) {
+      console.log("Error: Could not delete user", error);
+      return new Response("Error: Could not delete user", {
+        status: 400,
+      });
+    }
   }
 
   return new Response("Webhook received", { status: 200 });
