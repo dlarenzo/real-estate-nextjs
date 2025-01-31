@@ -15,6 +15,7 @@ export const createOrUpdateUser = async (
       { clerkId: id },
       {
         $set: {
+          // based off of the Model: user.model.js file
           firstName: first_name,
           lastName: last_name,
           profilePicture: image_url,
