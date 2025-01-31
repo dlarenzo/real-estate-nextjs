@@ -22,7 +22,7 @@ export const connect = async () => {
   try {
     await mongoose.connect(uri, {
       dbName: "next-realtor",
-      useUnifiedTopology: true,
+      // useUnifiedTopology: true,
     });
     initialized = true;
     console.log("MongoDB connected");
