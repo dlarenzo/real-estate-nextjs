@@ -76,7 +76,7 @@ export async function POST(req) {
       }
     } catch (error) {
       console.log("Error: Could not create or update user:", error);
-      return new Response("Error: Could not create or update user", {
+      return new Response("Error: Could not create or update user!", {
         status: 400,
       });
     }

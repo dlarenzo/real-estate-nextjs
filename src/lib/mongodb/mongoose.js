@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 let initialized = false;
 
@@ -10,15 +13,20 @@ export const connect = async () => {
     return;
   }
 
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.error("MongoDB URI is not defined in the environment variables");
+    return;
+  }
+
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "next-estate",
-      useNewUrlParser: true,
+    await mongoose.connect(uri, {
+      dbName: "next-realtor",
       useUnifiedTopology: true,
     });
     initialized = true;
     console.log("MongoDB connected");
   } catch (error) {
-    console.log("MongoDB connection error:", error);
+    console.error("MongoDB connection error:", error);
   }
 };
