@@ -7,12 +7,12 @@ export const POST = async (req) => {
   try {
     await connect();
     const data = await req.json();
-    if (!user || user.publicMetadata.userMogoId !== data.userMogoId) {
+    if (!user || user.publicMetadata.userMogoId !== data.userMongoId) {
       return new Response("Unauthorized", { status: 401 });
     }
     // Create a new listing
     const newListing = await Listing.create({
-      userRef: user.publicMetadata.userMongoId,
+      userRef: user.publicMetadata.userMogoId,
       name: data.name,
       description: data.description,
       address: data.address,
@@ -27,7 +27,7 @@ export const POST = async (req) => {
       imageUrls: data.imageUrls,
     });
     await newListing.save();
-    return new Response(JSON.stringify(newPost), { status: 200 });
+    return new Response(JSON.stringify(newListing), { status: 200 });
   } catch (error) {
     console.log("Error creating listing", error);
     return new Response("Error creating post", {
