@@ -166,7 +166,7 @@ export default function CreateListing() {
   if (!isSignedIn) {
     return (
       <h1 className="text-center text-xl my-7 font-semibold">
-        You are not authorized to view this page
+        You are not Signed In. Please sign in to view this page
       </h1>
     );
   }
@@ -181,7 +181,7 @@ export default function CreateListing() {
           <input
             type="text"
             placeholder="Name"
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg text-black"
             id="name"
             maxLength="62"
             minLength="10"
@@ -192,7 +192,7 @@ export default function CreateListing() {
           <textarea
             type="text"
             placeholder="Description"
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg text-black"
             id="description"
             required
             onChange={handleChange}
@@ -201,7 +201,7 @@ export default function CreateListing() {
           <input
             type="text"
             placeholder="Address"
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg text-black"
             id="address"
             required
             onChange={handleChange}
@@ -212,7 +212,7 @@ export default function CreateListing() {
               <input
                 type="checkbox"
                 id="sale"
-                className="w-5"
+                className="w-5 text-black"
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
@@ -222,7 +222,7 @@ export default function CreateListing() {
               <input
                 type="checkbox"
                 id="rent"
-                className="w-5"
+                className="w-5 text-black"
                 onChange={handleChange}
                 checked={formData.type === "rent"}
               />
@@ -267,7 +267,7 @@ export default function CreateListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg"
+                className="p-3 border border-gray-300 rounded-lg text-black"
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
@@ -280,7 +280,7 @@ export default function CreateListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg"
+                className="p-3 border border-gray-300 rounded-lg text-black"
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
@@ -293,11 +293,11 @@ export default function CreateListing() {
                 min="50"
                 max="10000000"
                 required
-                className="p-3 border border-gray-300 rounded-lg"
+                className="p-3 border border-gray-300 rounded-lg text-black"
                 onChange={handleChange}
                 value={formData.regularPrice}
               />
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center ">
                 <p>Regular price</p>
                 <span className="text-xs">($ / month)</span>
               </div>
@@ -310,7 +310,7 @@ export default function CreateListing() {
                   min="0"
                   max="10000000"
                   required
-                  className="p-3 border border-gray-300 rounded-lg"
+                  className="p-3 border border-gray-300 rounded-lg text-black"
                   onChange={handleChange}
                   value={formData.discountPrice}
                 />
