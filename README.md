@@ -14,6 +14,16 @@ pnpm dev
 bun dev
 ```
 
+## Branches
+
+1.0-file-setup
+2.0-header
+3.0-authentication
+4.0-middleware-webhooks
+5.0-mongodb-send-data
+6.0-listing-page
+7.0-update-listings-page
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
