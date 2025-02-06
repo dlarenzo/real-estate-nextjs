@@ -39,9 +39,9 @@ export default function UpdateListing() {
           listingId,
         }),
       });
-      // FIX ME FIX ME FIX ME FIX ME
+
       const data = await res.json();
-      // FIX ME FIX ME FIX ME FIX ME
+
       if (data.success === false) {
         console.log(data.message);
         return;
