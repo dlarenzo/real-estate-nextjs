@@ -23,6 +23,7 @@ bun dev
 5.0-mongodb-send-data
 6.0-listing-page
 7.0-update-listings-page
+8.0-complete-listing-page
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
