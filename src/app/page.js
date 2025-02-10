@@ -53,7 +53,7 @@ function RentListings() {
               className="text-sm text-blue-800 hover:underline"
               href={"/search?type=rent"}
             >
-              Show more places for rent
+              Create A Listing RESTARTING
             </Link>
           </div>
           <div className="flex flex-wrap gap-4">
