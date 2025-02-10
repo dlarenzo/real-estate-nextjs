@@ -12,23 +12,18 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals"),
   {
-    env: {
-      browser: true,
-      es2021: true,
-    },
-    extends: [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@next/next/recommended",
-    ],
-    parserOptions: {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "module",
       ecmaFeatures: {
         jsx: true,
       },
-      ecmaVersion: 12,
-      sourceType: "module",
     },
-    plugins: ["react"],
+    plugins: {
+      react: require("eslint-plugin-react"),
+      "@next/next": require("@next/eslint-plugin-next"),
+    },
     rules: {
       "react/react-in-jsx-scope": "off",
     },
