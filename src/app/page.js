@@ -25,7 +25,6 @@ function RentListings() {
               limit: 4,
               order: "asc",
             }),
-            cache: "no-store",
           }
         );
         const data = await result.json();
