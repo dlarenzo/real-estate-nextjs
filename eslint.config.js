@@ -1,22 +1,26 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@next/next/recommended",
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+import { FlatCompat } from "@eslint/eslintrc";
+import reactPlugin from "eslint-plugin-react";
+import nextPlugin from "@next/eslint-plugin-next";
+
+const compat = new FlatCompat();
+
+export default [
+  ...compat.extends("next/core-web-vitals"),
+  {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "module",
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
-    ecmaVersion: 12,
-    sourceType: "module",
+    plugins: {
+      react: reactPlugin,
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      "react/react-in-jsx-scope": "off",
+    },
   },
-  plugins: ["react"],
-  rules: {
-    "react/react-in-jsx-scope": "off",
-  },
-};
+];
