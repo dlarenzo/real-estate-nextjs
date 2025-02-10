@@ -95,7 +95,7 @@ export default async function Home() {
               href={"/create-listing"}
               className="text-xs sm:text-sm text-white font-bold hover:underline bg-yellow-500 mb-5 px-10 py-5 rounded-lg"
             >
-              Create A Listing
+              Create A Listing RESTARTING
             </Link>
           </div>
         </div>
