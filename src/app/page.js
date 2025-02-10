@@ -87,7 +87,8 @@ export default async function Home() {
               Listings
             </h2>
             <p className="text-3xl my-5">
-              Check out the listings you have added below!!!YAY CRYING NOW
+              Check out the listings you have added below!!!YAY CRYING NOW. NEW
+              FILE
             </p>
           </div>
           <div className="my-5 py-5">
