@@ -18,8 +18,6 @@ const eslintConfig = [
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: "module",
-    },
-    parserOptions: {
       ecmaFeatures: {
         jsx: true,
       },
