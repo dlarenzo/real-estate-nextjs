@@ -1,6 +1,8 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import reactPlugin from "eslint-plugin-react";
+import nextPlugin from "@next/eslint-plugin-next";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,8 +23,8 @@ const eslintConfig = [
       },
     },
     plugins: {
-      react: require("eslint-plugin-react"),
-      "@next/next": require("@next/eslint-plugin-next"),
+      react: reactPlugin,
+      "@next/next": nextPlugin,
     },
     rules: {
       "react/react-in-jsx-scope": "off",
