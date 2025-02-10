@@ -37,7 +37,7 @@ export default function Header() {
         <Link href="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap ">
             <span className="text-slate-500">Home</span>
-            <span className="text-slate-700">Realty</span>
+            <span className="text-yellow-500">Realty</span>
           </h1>
         </Link>
         {/* SEARCH */}

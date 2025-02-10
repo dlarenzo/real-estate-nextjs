@@ -8,9 +8,7 @@ export default function FeatureCard({ title, description, icon: Icon }) {
           <Icon className="text-yellow-500 my-2" size={48} />
         </div>
         <div>
-          <h3 className="text-yellow-500 font-semibold text-2xl pb-5">
-            {title}
-          </h3>
+          <h3 className="text-yellow-500 f text-2xl pb-5">{title}</h3>
           <p className="pb-5">{description}</p>
         </div>
       </div>

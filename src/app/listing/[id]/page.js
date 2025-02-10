@@ -32,7 +32,7 @@ export default async function Listing({ params }) {
   // SHOW THE LISTING
   if (listing && listing.name !== "Failed to load listing") {
     return (
-      <main>
+      <main className="pt-20">
         <div>
           {/* BACKGROUND IMAGE */}
           <img

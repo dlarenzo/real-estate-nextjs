@@ -5,7 +5,7 @@ import FeatureCard from "./FeatureCard";
 
 export default function Features() {
   return (
-    <div className="max-w-6xl mx-auto px-5 py-40 flex  lg:flex-row flex-col gap-8">
+    <div className="max-w-6xl mx-auto px-5 py-10 flex  lg:flex-row flex-col gap-8">
       {/* Features Explanation */}
       <div className="w-full lg:w-[45%]">
         <h2 className="text-5xl pb-5 font-semibold text-yellow-500">
