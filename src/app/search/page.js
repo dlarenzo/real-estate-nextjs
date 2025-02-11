@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ListingItem from "../../components/ListingItem";
 import { useRouter, useSearchParams } from "next/navigation";
-export default function Search() {
+
+// Component using useSearchParams
+function SearchResults() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [sidebardata, setSidebardata] = useState({
@@ -17,6 +19,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
+
   useEffect(() => {
     const urlParams = new URLSearchParams(searchParams);
     const searchTermFromUrl = urlParams.get("searchTerm");
@@ -260,5 +263,16 @@ export default function Search() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Component using useRouter wrap in <Suspense></Suspense>
+export default function Search() {
+  return (
+    <main>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchResults />
+      </Suspense>
+    </main>
   );
 }
