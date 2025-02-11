@@ -1,14 +1,12 @@
 import Listing from "../../../../lib/models/listing.model.js";
 import { connect } from "../../../../lib/mongodb/mongoose.js";
 import { currentUser } from "@clerk/nextjs/server";
-
 export const POST = async (req) => {
   const user = await currentUser();
   try {
     await connect();
     const data = await req.json();
-    // Check if the user is authorized to update the listing
-    if (!user || user.publicMetadata.userMogoId !== data.userMongoId) {
+    if (!user || user.publicMetadata.userMogoId !== data.userMogoId) {
       return new Response("Unauthorized", {
         status: 401,
       });
@@ -34,9 +32,11 @@ export const POST = async (req) => {
       { new: true }
     );
     await newListing.save();
-    return new Response(JSON.stringify(newListing), { status: 200 });
+    return new Response(JSON.stringify(newListing), {
+      status: 200,
+    });
   } catch (error) {
-    console.log("Error creating listing :", error);
+    console.log("Error creating listing:", error);
     return new Response("Error creating listing", {
       status: 500,
     });
