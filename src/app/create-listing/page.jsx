@@ -37,6 +37,19 @@ export default function CreateListing() {
     furnished: false,
   });
 
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isSignedIn) {
+    return (
+      <div className="text-center text-4xl my-7 font-semibold pt-40">
+        Oh No! <br></br> It appears you are not signed in. <br></br>Please sign
+        in above to create a listing.
+      </div>
+    );
+  }
+
   console.log(formData);
 
   const handleImageSubmit = (e) => {

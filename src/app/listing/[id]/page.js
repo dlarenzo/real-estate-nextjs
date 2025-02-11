@@ -3,9 +3,9 @@ import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkerAlt,
-  FaParking,
-} from "react-icons/fa";
+  FaLocationDot,
+  FaSquareParking,
+} from "react-icons/fa6";
 
 // WE USE ASYNC FUNCTIONS TO FETCH DATA AND PASS IT TO THE COMPONENT VIA PARAMS
 export default async function Listing({ params }) {
@@ -49,7 +49,7 @@ export default async function Listing({ params }) {
               {listing.type === "rent" && " / Month"}
             </p>
             <p className="flex items=center mt-6 gap-2 text-slate-600 text-sm">
-              <FaMapMarkerAlt className="text-green-700" />
+              <FaLocationDot className="text-green-700" />
               {listing.address}
             </p>
             <div className="flex gap-4">
@@ -80,7 +80,7 @@ export default async function Listing({ params }) {
                   : `${listing.bathrooms} bath`}
               </li>
               <li className="flex items-center gap-1 whitespace-nowrap">
-                <FaParking className="text-lg" />
+                <FaSquareParking className="text-lg" />
                 {listing.parking ? "Parking spot" : "No parking spot"}
               </li>
               <li className="flex items-center gap-1 whitespace-nowrap">
