@@ -1,6 +1,7 @@
 import ListingItem from "@/components/ListingItem";
 import Link from "next/link";
 import Image from "next/image";
+import Features from "@/components/Feature";
 
 export default async function Home() {
   let rentListings = null;
@@ -52,29 +53,54 @@ export default async function Home() {
   }
   return (
     <div className="">
-      <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-        <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-          Find your next <span className="text-slate-500">perfect</span> <br />
-          place with ease!!!!!!!!!{" "}
-        </h1>
-        <div className="text gray">
-          Home Realty is the best place to find your next home. <br />
-          We have a wide variety of listings to suit your needs. Whether
-          you&apos;re looking to rent, buy, or find special offers, we have
-          something for everyone.
+      <div className="bg-[url('/img/hero/hero-bg.jpg')] bg-center bg-cover flex flex-col items-center justify-center text-white  sm:px-20 sm:py-56 lg:p-56 relative w-full max-h-5/6 z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-50 z-2"></div>
+        <div className="flex flex-col items-start gap-6 max-w-6xl mx-auto my-20 px-5 py-10 relative z-5">
+          <h1 className="text-white font-bold text-4xl sm:text-5xl lg:text-6xl">
+            Find your next <span className="text-yellow-400">perfect</span>{" "}
+            place with ease{" "}
+          </h1>
+          <div className=" text-xl text-semibold">
+            Home Realty is the best place to find your next home. <br />
+            We have a wide variety of listings to suit your needs. Whether
+            you&apos;re looking to rent, buy, or find special offers, we have
+            something for everyone.
+          </div>
+          <Link
+            href={"/search"}
+            className="text-xs sm:text-sm text-white font-bold hover:underline bg-yellow-500 px-10 py-5 rounded-lg"
+          >
+            Let&apos;s start looking...
+          </Link>
         </div>
-        <Link
-          href={"/search"}
-          className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
-        >
-          Let&apos;s start looking...
-        </Link>
       </div>
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/mern-auth-1c4ae.appspot.com/o/1693307829089home%203.jpeg?alt=media&token=8dcc9a22-a8d3-4737-b27f-7c77b417a7d0"
-        className="w-full h-[550px] object-cover"
-        alt="home"
-      />
+
+      {/* Features */}
+      <Features />
+
+      {/* Listings Header */}
+      <div>
+        <div className="bg-[url('/img/listing/listing-bg.webp)] bg-center bg-cover mb-10 text-center py-5">
+          <div className="my-5 py-5">
+            <h2 className="text-5xl font-semibold text-yellow-400 text-center">
+              Listings
+            </h2>
+            <p className="text-3xl my-5">
+              Check out the listings you have added below.
+            </p>
+          </div>
+          <div className="my-5 py-5">
+            <Link
+              href={"/create-listing"}
+              className="text-xs sm:text-sm text-white font-bold hover:underline bg-yellow-500 mb-5 px-10 py-5 rounded-lg"
+            >
+              Create A Listing
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* User Created Listings */}
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
         {offerListings && offerListings.length > 0 && (
           <div className="">
