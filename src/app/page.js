@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Features from "@/components/Feature";
 import ListingHeader from "@/components/ListingHeader";
+import { Suspense } from "react";
+import Services from "@/components/Services";
 
 export default async function Home() {
   let rentListings = null;
@@ -80,7 +82,9 @@ export default async function Home() {
       <Features />
 
       {/* Listings Header */}
-      <ListingHeader />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ListingHeader />
+      </Suspense>
 
       {/* User Created Listings */}
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
@@ -145,6 +149,9 @@ export default async function Home() {
           </div>
         )}
       </div>
+
+      {/* SERVICES */}
+      <Services />
     </div>
   );
 }
