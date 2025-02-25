@@ -24,6 +24,10 @@ bun dev
 6.0-listing-page
 7.0-update-listings-page
 8.0-complete-listing-page
+9.0-home-about-pages
+10.0-search-page
+11.0-restart
+13.0-continued-project
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
